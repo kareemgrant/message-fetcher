@@ -50,11 +50,23 @@ describe MessageFetcher do
     end
 
     context "with invalid credentials" do
-      xit "raises an InvalidCredentials error if track_id is not an integer" do
+
+      it "raise an InvalidCredentials error if any of parameters are missing" do
+        data = {}
+        expect{ MessageFetcher.create_message(data) }.to raise_error(InvalidCredentials)
       end
-      xit "raises an InvalidCredentials error if user_id is not an integer" do
+
+      it "raises an InvalidCredentials error if track_id is not an integer" do
+        data = {track_id: "katrina", user_id: 1, body: "hello"}
+        expect{ MessageFetcher.create_message(data) }.to raise_error(InvalidCredentials)
       end
-      xit "raises an InvalidCredentials error if message body is missing" do
+      it "raises an InvalidCredentials error if user_id is not an integer" do
+        data = {track_id: 1, user_id: "hello", body: "hello"}
+        expect{ MessageFetcher.create_message(data) }.to raise_error(InvalidCredentials)
+      end
+      it "raises an InvalidCredentials error if message body is missing" do
+        data = {track_id: 1, user_id: 2, body: ""}
+        expect{ MessageFetcher.create_message(data) }.to raise_error(InvalidCredentials)
       end
     end
   end
