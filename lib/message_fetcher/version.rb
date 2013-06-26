@@ -1,0 +1,3 @@
+module MessageFetcher
+  VERSION = "0.0.1alpha"
+end
