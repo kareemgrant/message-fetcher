@@ -35,7 +35,9 @@ private
     response = conn.post do |req|
       req.url "/api/messages"
       req.headers['Content-Type'] = 'application/json'
-      req.body = {message: data}.to_json
+      req.body = {message: { user_id: data[:user_id],
+                             track_id: data[:track_id].to_i,
+                             body: data[:body]}}.to_json
     end
     JSON.parse(response.body)
   end
@@ -45,7 +47,7 @@ private
   end
 
   def valid_track?(track_id)
-    raise InvalidCredentials unless track_id.to_i.is_a?(Integer)
+    raise InvalidCredentials unless track_id.is_a?(Integer)
   end
 
   def check_params(params)
@@ -61,8 +63,8 @@ private
   end
 
   def validate_params(params)
-    raise InvalidCredentials unless params[:track_id].to_i.is_a?(Integer)
-    raise InvalidCredentials unless params[:user_id].to_i.is_a?(Integer)
+    raise InvalidCredentials unless params[:track_id].is_a?(Integer)
+    raise InvalidCredentials unless params[:user_id].is_a?(Integer)
     raise InvalidCredentials unless !params[:body].empty?
   end
 

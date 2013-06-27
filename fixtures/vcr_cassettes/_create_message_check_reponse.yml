@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:3002/api/messages
     body:
       encoding: UTF-8
-      string: ! '{"message":{"body":"Hello world","user_id":3,"track_id":2}}'
+      string: ! '{"message":{"user_id":3,"track_id":2,"body":"Hello world"}}'
     headers:
       User-Agent:
       - Faraday v0.8.7
@@ -21,20 +21,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"c9716b38c594212a53f939378ef65b5c"'
+      - ! '"e956e0de4a6dc42fbb7142b9a3649f45"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 91bc0d7e6f826b526e2db5efe0fad4bf
+      - cb7fc3530620a9bcfb5a64fc74f485f6
       X-Runtime:
-      - '0.004852'
+      - '0.006412'
       Connection:
       - close
       Server:
       - thin 1.5.1 codename Straight Razor
     body:
       encoding: US-ASCII
-      string: ! '{"body":"Hello world","created_at":"2013-06-26T17:51:41Z","id":12,"track_id":2,"updated_at":"2013-06-26T17:51:41Z","user_id":3}'
+      string: ! '{"body":"Hello world","created_at":"2013-06-27T16:12:50Z","id":3,"track_id":2,"updated_at":"2013-06-27T16:12:50Z","user_id":3}'
     http_version: 
-  recorded_at: Wed, 26 Jun 2013 17:51:41 GMT
+  recorded_at: Thu, 27 Jun 2013 16:12:50 GMT
 recorded_with: VCR 2.5.0
