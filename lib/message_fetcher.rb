@@ -45,7 +45,7 @@ private
   end
 
   def valid_track?(track_id)
-    raise InvalidCredentials unless track_id.is_a?(Integer)
+    raise InvalidCredentials unless track_id.to_i.is_a?(Integer)
   end
 
   def check_params(params)
@@ -61,8 +61,8 @@ private
   end
 
   def validate_params(params)
-    raise InvalidCredentials unless params[:track_id].is_a?(Integer)
-    raise InvalidCredentials unless params[:user_id].is_a?(Integer)
+    raise InvalidCredentials unless params[:track_id].to_i.is_a?(Integer)
+    raise InvalidCredentials unless params[:user_id].to_i.is_a?(Integer)
     raise InvalidCredentials unless !params[:body].empty?
   end
 
