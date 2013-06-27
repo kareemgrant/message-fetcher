@@ -25,17 +25,19 @@ private
   end
 
   def fetch_messages(track_id)
-    conn.get do |req|
+   response = conn.get do |req|
       req.url "/api/messages/#{track_id}"
     end
+   JSON.parse(response.body)
   end
 
   def post_messages(data)
-    conn.post do |req|
+    response = conn.post do |req|
       req.url "/api/messages"
       req.headers['Content-Type'] = 'application/json'
       req.body = {message: data}.to_json
     end
+    JSON.parse(response.body)
   end
 
   def base_url
