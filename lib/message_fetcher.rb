@@ -43,29 +43,6 @@ private
   def base_url
     "http://localhost:3002"
   end
+end
 
-  # def valid_track?(track_id)
-  #   raise InvalidCredentials unless track_id.is_a?(Integer)
-  # end
-
-  # def check_params(params)
-  #   if all_params_present?(params)
-  #     validate_params(params)
-  #   else
-  #     raise InvalidCredentials
-  #   end
-  # end
-
-  # def all_params_present?(params)
-  #   params.has_key?(:track_id) && params.has_key?(:user_id) && params.has_key?(:body)
-  # end
-
-  # def validate_params(params)
-  #   raise InvalidCredentials unless params[:track_id].is_a?(Integer)
-  #   raise InvalidCredentials unless params[:user_id].is_a?(Integer)
-  #   raise InvalidCredentials unless !params[:body].empty?
-  # end
-
-# end
-
-# class InvalidCredentials < StandardError; end
+class InvalidCredentials < StandardError; end
