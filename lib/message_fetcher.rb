@@ -24,18 +24,16 @@ private
 
   def fetch_messages(track_id)
    response = conn.get do |req|
-      req.url "/api/messages/#{track_id}"
+      req.url "/api/tracks/#{track_id}/messages"
     end
    JSON.parse(response.body)
   end
 
   def post_messages(data)
     response = conn.post do |req|
-      req.url "/api/messages"
+      req.url "/api/tracks/#{data[:track_id]}/messages"
       req.headers['Content-Type'] = 'application/json'
-      req.body = {message: { user_id: data[:user_id],
-                             track_id: data[:track_id].to_i,
-                             body: data[:body]}}.to_json
+      req.body = {message: { user_id: data[:user_id], body: data[:body]}}.to_json
     end
     JSON.parse(response.body)
   end
